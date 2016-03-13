@@ -39,7 +39,8 @@ Feature: Write Articles
     And I am on the Home Page
     Then I should see "Foo"
     When I follow "Foo"
-    
+    Then the Author of "1" should be "user_1"
+    And the Author of "1" should not be "user_2"
     
   Scenario: How many comments? ONE BUNNCCCHHHHHH!!!
     Given the articles "1" and "2" were merged

@@ -102,8 +102,6 @@ class Article < Content
     self.body = self.body + ' ' + article.body
     self.comments << article.comments
     self.save!
-    
-    article = article.find_by_id(other_article_id)
     article.destroy
     return true
   end

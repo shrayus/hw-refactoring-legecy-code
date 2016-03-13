@@ -147,13 +147,9 @@
       <%= render 'admin/content/attachment', { :attachment_num => 1, :hidden => false } -%>
     </ul>
   </div>    
-  
-  <div class=''>
-    <h4><%= _("Merge Articles") %></h4>
-    Article ID  <input type="text" name="Merge With This Article"><Br>
-    <button type="button" class="btn">Merge</button>
-  </div>   
-  </div>
-
+  <% if current_user.admin? %> 
+    <h4>Merge Articles</h4>
+    <%= form_tag("admin/content", :action => "merge_articles", :id => @article.id) %>
+    <% end %>
+  <% end %>
 </div>
-

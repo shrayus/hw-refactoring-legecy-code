@@ -96,9 +96,8 @@ class Article < Content
 
   def merge_with(other_article_id)
     article = article.find_by_id(other_article_id)
-    if !article or self.id == other_article_id
-      return false
-    end
+    
+    return false unless (article.id or self.id)
     
     self.body = self.body + ' ' + article.body
     self.comments << article.comments

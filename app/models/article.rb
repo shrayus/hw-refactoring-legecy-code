@@ -95,8 +95,16 @@ class Article < Content
   include Article::States
 
   def merge_with(other_article_id)
-    #DO SOMETHING
-    nil
+    article = article.find_by_id(other_article_id)
+    if !article or self.id == other_article_id
+      return false
+    end
+    
+    self.body << '\n\n' + article.body
+    self.comments << article.comments
+    self.save!
+    article.destroy!
+    return true
   end
   
   class << self

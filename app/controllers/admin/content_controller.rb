@@ -241,7 +241,13 @@ class Admin::ContentController < Admin::BaseController
     @resources = Resource.by_created_at
   end
   
-  def merge_articles
-    nil
+  def merge_articles other_id
+    @article = Article.find(params[:id])
+    if @article.merge_with other_id
+      flash[:notice] = "merged successfully"
+    else
+      flash[:notice] = "failed merge"
+    end
+    redirect_to :action => 'edit', :id => params[:id]
   end
 end

@@ -100,9 +100,9 @@ class Article < Content
       return false
     end
     
-    self.body << '\n\n' + article.body
+    self.body << ' ' + article.body
     self.comments << article.comments
-    self.save!
+    # self.save!
     article.destroy!
     return true
   end
